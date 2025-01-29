@@ -1,13 +1,13 @@
 import mongoose from "mongoose";
 import app from "./app.js";
-//OBJgFVnUwSl028iV
-const DB_HOST =
-  "mongodb+srv://Hennadii71:OBJgFVnUwSl028iV@cluster0.tibuo.mongodb.net/my-contacts?retryWrites=true&w=majority&appName=Cluster0";
+
+const { DB_HOST, PORT = 3000 } = process.env;
+
 mongoose
   .connect(DB_HOST)
   .then(() => {
-    app.listen(3000, () => {
-      console.log("Server is running on port 3000");
+    app.listen(PORT, () => {
+      console.log(`Server is running on port ${PORT}`);
     });
   })
   .catch((error) => {
