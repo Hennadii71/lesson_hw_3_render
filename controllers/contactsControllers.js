@@ -27,18 +27,18 @@ const getContacts = async (req, res, next) => {
 //   }
 // };
 
-// const createContact = async (req, res, next) => {
-//   try {
-//     const { error } = createContactSchema.validate(req.body);
-//     if (error) {
-//       throw HttpError(400, error.message);
-//     }
-//     const newContact = await addContact(req.body);
-//     res.status(201).json(newContact);
-//   } catch (error) {
-//     next(error);
-//   }
-// };
+const createContact = async (req, res, next) => {
+  try {
+    const { error } = createContactSchema.validate(req.body);
+    if (error) {
+      throw HttpError(400, error.message);
+    }
+    const newContact = await Contact.create(req.body);
+    res.status(201).json(newContact);
+  } catch (error) {
+    next(error);
+  }
+};
 
 // const updateContact = async (req, res, next) => {
 //   try {
@@ -75,7 +75,7 @@ const getContacts = async (req, res, next) => {
 export default {
   getContacts,
   // getById,
-  // createContact,
+  createContact,
   // updateContact,
   // deleteContact,
 };

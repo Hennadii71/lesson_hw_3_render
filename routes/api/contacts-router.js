@@ -1,13 +1,13 @@
 import express from "express";
 import contactsControllers from "../../controllers/contactsControllers.js";
-import isEmptyBody from "../../helpers/validateBody.js";
+import isEmptyBody from "../../helpers/isEmptyBody.js";
 const contactsRouter = express.Router();
 
 contactsRouter.get("/", contactsControllers.getContacts);
 
 // contactsRouter.get("/:id", contactsControllers.getById);
 
-// contactsRouter.post("/", isEmptyBody, contactsControllers.createContact);
+contactsRouter.post("/", isEmptyBody, contactsControllers.createContact);
 
 // contactsRouter.put("/:id", isEmptyBody, contactsControllers.updateContact);
 
